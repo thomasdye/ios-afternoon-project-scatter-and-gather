@@ -11,28 +11,28 @@ After completing the lesson material and this project, you'll be able to animate
 Follow these steps to set up your project skeleton:
 
 1. Create a new single-view project. 
-2. Embed the view controller in a navigation controller in the `Main.storyboard`. 
+2. Embed the view controller in a navigation controller in the `Main.storyboard` (be sure to move the initial view controller arrow as well)
 
 ## Create a bar button that calls back to your main view controller
 
 These steps enable you to run your animation with a single tap:
 
-1. Create a new bar button item in your view controller's navigation item.
+1. Create a new bar button item in your view controller's navigation bar (drag to left or right side).
 2. Name it `toggle`
-3. Connect it to your view controller so it will run `toggle(_:)` as an `@IBAction`.
-4. Establish a boolean variable called `shouldScramble` that you toggle back and forth. You'll animate your views to either scramble them or gather them together when the toggle button is tapped.
+3. Connect it to your view controller with an `IBAction` and name it `toggle(_:)`.
+4. Create a boolean property variable called `isScrambled` that you can toggle back and forth. You'll animate your views to either scramble them or gather them together when the toggle button is tapped and this boolean will help you decide which state you're in (scrambled or gathered).
 
 ## Create views
 
-Build the items you want to animate, either by hand or in Interface Builder. You'll need six labels (one for each letter) and one image view (for the Lambda logo). Your PM will give you the art for the Lambda logo.
+Build the items you want to animate, either by hand or in Interface Builder. You'll need six labels (one for each letter) and one image view (for the Lambda logo). Look for the logo file in this repo.
 
-Connect these views to your view controller so they can be animated by your `toggle(_:)` method.
+Create `IBOutlet`'s for these views in your view controller so they can be animated by your `toggle(_:)` method.
 
 ## Animate
 
 When scattering:
 
-* Fade out your logo view
+* Fade out your logo view (meaning the logo should disappear over the length of the animation)
 * Move your letters to random locations
 * Assign them a random background color and text color
 * Use a custom transform to rotate the views (`letter.transform = CGAffineTransform(rotationAngle: random_angle`)
@@ -41,8 +41,8 @@ When scattering:
 
 When gathering:
 
-* Fade in your logo view
-* Reset all the custom properties you previously assigned to the letters.
+* Fade in your logo view (meaning it should gradually reappear as the gather animation runs)
+* Reset all the custom properties you previously assigned to the letters (meaning they should appear as they did at the start of the app).
 * Animate the letters back to their starting position, either as a line or however you have them set up by default.
 
 ## Stretch
@@ -65,5 +65,4 @@ Here are some helpful resources for your project:
     * [Wolfram](http://mathworld.wolfram.com/AffineTransformation.html)
     * [Wikipedia](https://en.wikipedia.org/wiki/Affine_transformation)
     * [University of Texas](https://www.cs.utexas.edu/users/fussell/courses/cs384g-fall2011/lectures/lecture07-Affine.pdf)
-* [Using `arc4random` and `arc4random_uniform`](https://www.freebsd.org/cgi/man.cgi?query=arc4random)
-    * [Stack Overflow](https://stackoverflow.com/questions/32552336/generating-random-numbers-with-swift)
+* [Apple Doc on the random function of the `Int` type](https://developer.apple.com/documentation/swift/int/2995646-random)
